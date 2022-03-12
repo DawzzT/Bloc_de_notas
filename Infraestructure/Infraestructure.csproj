@@ -45,6 +45,9 @@
     <Compile Include="Repositories\StreamArchivotxtRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{2B1DE0A6-42F5-48CB-AC94-E602940E03B6}</Project>
       <Name>Domain</Name>

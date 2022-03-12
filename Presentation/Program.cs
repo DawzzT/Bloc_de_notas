@@ -1,8 +1,14 @@
-﻿using System;
+﻿using Autofac;
+using AppCore.IServices;
+using AppCore.Services;
+using Domain.Interfaces;
+using Infraestructure.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Presentation.Formularios;
 
 namespace Presentation
 {
@@ -16,7 +22,11 @@ namespace Presentation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            var builder = new ContainerBuilder();
+            builder.RegisterType<StreamArchivotxtRepository>().As<IArchivotxtModel>();
+            builder.RegisterType<ArchivotxtServices>().As<IArchivotxtServices>();
+            var container = builder.Build();
+            Application.Run(new Principal(container.Resolve<IArchivotxtServices>()));
         }
     }
 }
