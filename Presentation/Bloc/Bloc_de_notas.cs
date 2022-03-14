@@ -233,6 +233,7 @@ namespace Presentation.Bloc
 
             trvArchivos.Nodes.Add(CrearArbol(directoryInfo));
             richTextBox1.Clear();
+
         }
     }
 }
