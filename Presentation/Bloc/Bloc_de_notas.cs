@@ -40,7 +40,11 @@ namespace Presentation.Bloc
             }
             foreach (var item in directoryInfo.GetFiles())
             {
-                treeNode.Nodes.Add(new TreeNode(item.Name));
+                if (Path.GetExtension(item.FullName)== ".txt")
+                {
+                    treeNode.Nodes.Add(new TreeNode(item.Name));
+                }
+               
             }
             return treeNode;
         }
@@ -48,7 +52,8 @@ namespace Presentation.Bloc
 
         private void Bloc_de_notas_Load(object sender, EventArgs e)
         {
-
+            string nombre ="kk";
+            File.Create(carpeta + @"\" + nombre + ".txt");
             trvArchivos.Nodes.Clear();
 
             DirectoryInfo directoryInfo = new DirectoryInfo(carpeta);
@@ -139,6 +144,7 @@ namespace Presentation.Bloc
             else
             {
                 ruta = trvArchivos.SelectedNode.FullPath;
+                MessageBox.Show(ruta);
             }
             
             string extension = Path.GetExtension(ruta);
@@ -200,11 +206,9 @@ namespace Presentation.Bloc
            
         }
 
-        private void nuevoToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void nuevoToolStripFile_Click(object sender, EventArgs e)
         {
-            txtNombre.Visible = true;
-            btnCrear.Visible = true;
-
+           
         }
 
         private void btnCambiar_Click(object sender, EventArgs e)
@@ -226,14 +230,30 @@ namespace Presentation.Bloc
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string path =trvArchivos.SelectedNode.FullPath;
-            File.AppendAllText(path, richTextBox1.Text);
-            trvArchivos.Nodes.Clear();
+          
+            
+                File.WriteAllText(path, richTextBox1.Text);
+                trvArchivos.Nodes.Clear();
 
-            DirectoryInfo directoryInfo = new DirectoryInfo(carpeta);
+                DirectoryInfo directoryInfo = new DirectoryInfo(carpeta);
 
-            trvArchivos.Nodes.Add(CrearArbol(directoryInfo));
+                trvArchivos.Nodes.Add(CrearArbol(directoryInfo));
+                MessageBox.Show("Guardado");
+                richTextBox1.Clear();
+          
+            
+
+        }
+
+        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             richTextBox1.Clear();
+            OpenFileDialog msg = new OpenFileDialog();
+            msg.Filter = "Archivos de texto|*.txt";
+            DialogResult res = msg.ShowDialog();
 
+            if (res == DialogResult.OK)
+                richTextBox1.Text = File.ReadAllText(msg.FileName);
         }
     }
 }

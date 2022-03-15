@@ -32,20 +32,21 @@ namespace Presentation.Bloc
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bloc_de_notas));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnCambiar = new System.Windows.Forms.Button();
+            this.btnCrear = new System.Windows.Forms.Button();
+            this.txtNombre = new System.Windows.Forms.TextBox();
             this.trvArchivos = new System.Windows.Forms.TreeView();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.contextMenuStripEdit = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.arbirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarNombreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.btnCrear = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nuevoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoToolStripFile = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnCambiar = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.abrirToolStripFile = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -76,6 +77,36 @@ namespace Presentation.Bloc
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 0;
             // 
+            // btnCambiar
+            // 
+            this.btnCambiar.Location = new System.Drawing.Point(179, 4);
+            this.btnCambiar.Name = "btnCambiar";
+            this.btnCambiar.Size = new System.Drawing.Size(75, 23);
+            this.btnCambiar.TabIndex = 6;
+            this.btnCambiar.Text = "Cambiar";
+            this.btnCambiar.UseVisualStyleBackColor = true;
+            this.btnCambiar.Visible = false;
+            this.btnCambiar.Click += new System.EventHandler(this.btnCambiar_Click);
+            // 
+            // btnCrear
+            // 
+            this.btnCrear.Location = new System.Drawing.Point(178, 2);
+            this.btnCrear.Name = "btnCrear";
+            this.btnCrear.Size = new System.Drawing.Size(75, 23);
+            this.btnCrear.TabIndex = 4;
+            this.btnCrear.Text = "Crear";
+            this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Visible = false;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(72, 3);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.TabIndex = 3;
+            this.txtNombre.Visible = false;
+            // 
             // trvArchivos
             // 
             this.trvArchivos.ContextMenuStrip = this.contextMenuStripEdit;
@@ -86,15 +117,6 @@ namespace Presentation.Bloc
             this.trvArchivos.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvArchivos_AfterSelect);
             this.trvArchivos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvArchivos_MouseDoubleClick);
             this.trvArchivos.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trvArchivos_MouseUp);
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(3, 3);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(515, 444);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // contextMenuStripEdit
             // 
@@ -135,25 +157,6 @@ namespace Presentation.Bloc
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
             // 
-            // txtNombre
-            // 
-            this.txtNombre.Location = new System.Drawing.Point(72, 3);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(100, 20);
-            this.txtNombre.TabIndex = 3;
-            this.txtNombre.Visible = false;
-            // 
-            // btnCrear
-            // 
-            this.btnCrear.Location = new System.Drawing.Point(178, 2);
-            this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(75, 23);
-            this.btnCrear.TabIndex = 4;
-            this.btnCrear.Text = "Crear";
-            this.btnCrear.UseVisualStyleBackColor = true;
-            this.btnCrear.Visible = false;
-            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -168,18 +171,19 @@ namespace Presentation.Bloc
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nuevoToolStripMenuItem1,
+            this.nuevoToolStripFile,
+            this.abrirToolStripFile,
             this.guardarToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // nuevoToolStripMenuItem1
+            // nuevoToolStripFile
             // 
-            this.nuevoToolStripMenuItem1.Name = "nuevoToolStripMenuItem1";
-            this.nuevoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.nuevoToolStripMenuItem1.Text = "Nuevo";
-            this.nuevoToolStripMenuItem1.Click += new System.EventHandler(this.nuevoToolStripMenuItem1_Click);
+            this.nuevoToolStripFile.Name = "nuevoToolStripFile";
+            this.nuevoToolStripFile.Size = new System.Drawing.Size(180, 22);
+            this.nuevoToolStripFile.Text = "Nuevo";
+            this.nuevoToolStripFile.Click += new System.EventHandler(this.nuevoToolStripFile_Click);
             // 
             // guardarToolStripMenuItem
             // 
@@ -188,16 +192,21 @@ namespace Presentation.Bloc
             this.guardarToolStripMenuItem.Text = "Guardar y cerrar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
-            // btnCambiar
+            // richTextBox1
             // 
-            this.btnCambiar.Location = new System.Drawing.Point(179, 4);
-            this.btnCambiar.Name = "btnCambiar";
-            this.btnCambiar.Size = new System.Drawing.Size(75, 23);
-            this.btnCambiar.TabIndex = 6;
-            this.btnCambiar.Text = "Cambiar";
-            this.btnCambiar.UseVisualStyleBackColor = true;
-            this.btnCambiar.Visible = false;
-            this.btnCambiar.Click += new System.EventHandler(this.btnCambiar_Click);
+            this.richTextBox1.Location = new System.Drawing.Point(3, 3);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(515, 444);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // abrirToolStripFile
+            // 
+            this.abrirToolStripFile.Name = "abrirToolStripFile";
+            this.abrirToolStripFile.Size = new System.Drawing.Size(180, 22);
+            this.abrirToolStripFile.Text = "Abrir";
+            this.abrirToolStripFile.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
             // 
             // Bloc_de_notas
             // 
@@ -236,8 +245,9 @@ namespace Presentation.Bloc
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem nuevoToolStripFile;
         private System.Windows.Forms.ToolStripMenuItem guardarToolStripMenuItem;
         private System.Windows.Forms.Button btnCambiar;
+        private System.Windows.Forms.ToolStripMenuItem abrirToolStripFile;
     }
 }
